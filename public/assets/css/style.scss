@@ -1,0 +1,161 @@
+$font-primary: 'Poppins', sans-serif;
+$font-secondary: 'Aboreto', cursive;
+
+$color-black: #222222;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html{
+    font-size: clamp(8px, 1vw, 10px);
+}
+
+body{
+    color: $color-black;
+    font-size: 1.6rem;
+    font-family: $font-primary;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+}
+
+.section-gap{
+    padding-top: 5em;
+    padding-bottom: 5em;
+}
+
+.btn{
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    &--primary{
+        color: #ffffff;
+        background-color: $color-black;
+    }
+}
+
+.header{
+    padding: 0 15px;
+    box-shadow: 0 1px 0 $color-black;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    &__logo{
+        display: inline-block;
+        &__iamge{
+            max-height: 4rem;
+        }
+    }
+    &__nav{
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+        margin-left: auto;
+        &__item{
+            &__link{
+                display: block;
+                color: $color-black;
+                font-size: 1em;
+                font-weight: 500;
+                padding: 0.8em 1em;
+                &:hover{
+                    background-color: rgba($color-black, $alpha: 0.2);
+                }
+            }
+            &.active{
+                .navbar__nav__item__link{
+                    color: #fff;
+                    background-color: $color-black;
+                }
+            }
+        }
+    }
+}
+
+.card{
+    padding: 15px;
+    border: 1px solid $color-black;
+    transition: box-shadow .2s ease-in-out;
+    &__header{
+        position: relative;
+        display: block;
+        height: 20rem;
+        border: inherit;
+        overflow: hidden;
+        &__image{
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: scale(1);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .2s ease-out;
+        }
+        @media (hover: hover) {
+            &:hover{
+                .card__header__image{
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+    &__body{
+        padding-top: 15px;
+        &__title{
+            &__link{
+                display: block;
+                color: $color-black;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+        &__text{
+            padding: 10px 0 20px
+        }
+    }
+
+    @mixin card-effect{
+        box-shadow:
+            -0.2em 0.2em 0 #ffe34e,
+            -0.4em 0.4em 0 #f700ff;
+    }
+    
+    &:active{
+        @include card-effect;
+    }
+    @media (hover: hover){
+        &:hover{
+            @include card-effect;
+        }
+    }
+}
+
+.all-article{
+    display: grid;
+    gap: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    grid-auto-flow: row;
+    @media (min-width: 576px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

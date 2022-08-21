@@ -1,0 +1,22 @@
+[
+    {
+        "article_image": "https://picsum.photos/500",
+        "article_title": "Article title gose here",
+        "article_description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, autem You need to enable JavaScript to run this app."
+    },
+    {
+        "article_image": "https://picsum.photos/600",
+        "article_title": "Article title gose here",
+        "article_description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, autem You need to enable JavaScript to run this app."
+    },
+    {
+        "article_image": "https://picsum.photos/700",
+        "article_title": "Article title gose here",
+        "article_description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, autem You need to enable JavaScript to run this app."
+    },
+    {
+        "article_image": "https://picsum.photos/550",
+        "article_title": "Article title gose here",
+        "article_description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, autem You need to enable JavaScript to run this app."
+    }
+]
