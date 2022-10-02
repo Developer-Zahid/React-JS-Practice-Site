@@ -1,6 +1,7 @@
 $font-primary: 'Poppins', sans-serif;
 $font-secondary: 'Aboreto', cursive;
 
+$color-white: #ffffff;
 $color-black: #222222;
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
@@ -9,6 +10,7 @@ $color-black: #222222;
 *{
     margin: 0;
     padding: 0;
+    outline: 0;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
@@ -27,6 +29,10 @@ a{
     text-decoration: none;
 }
 
+ul{
+    list-style-type: none;
+}
+
 img{
     display: block;
     max-width: 100%;
@@ -40,9 +46,20 @@ img{
 .btn{
     display: inline-block;
     padding: 0.5em 1.5em;
+    transition: background .2s ease-in-out;
     &--primary{
         color: #ffffff;
         background-color: $color-black;
+        &:active{
+            background-color: lighten($color-black, $amount: 20);
+        }
+        @media (hover: hover) {
+            &:focus-visible,
+            &:hover
+            {
+                background-color: lighten($color-black, $amount: 20);
+            }
+        }
     }
 }
 
@@ -63,7 +80,6 @@ img{
     &__nav{
         display: flex;
         align-items: center;
-        list-style-type: none;
         margin-left: auto;
         &__item{
             &__link{
@@ -87,46 +103,94 @@ img{
 }
 
 .card{
+    display: flex;
+    flex-direction: column;
     padding: 15px;
     border: 1px solid $color-black;
     transition: box-shadow .2s ease-in-out;
     &__header{
         position: relative;
-        display: block;
         height: 20rem;
         border: inherit;
         overflow: hidden;
-        &__image{
-            position: absolute;
-            top: 0;
-            left: 0;
-            transform: scale(1);
-            width: 100%;
+        &__link{
+            display: block;
             height: 100%;
-            object-fit: cover;
-            transition: transform .2s ease-out;
-        }
-        @media (hover: hover) {
-            &:hover{
-                .card__header__image{
-                    transform: scale(1.2);
+            &__image{
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: scale(1);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform .2s ease-out;
+            }
+            
+            @media (hover: hover) {
+                &:focus-visible,
+                &:hover
+                {
+                    .card__header__link__image{
+                        transform: scale(1.2);
+                    }
                 }
             }
         }
+
     }
     &__body{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
         padding-top: 15px;
+        &__list{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 10px;
+            &__item{
+                &__link{
+                    color: $color-black;
+                    font-size: 1.2rem;
+                    padding: 0.2em 0.7em;
+                    border: 1px solid $color-black;
+                    transition: all .2s ease-in-out;
+                    &:active,
+                    &:focus-visible
+                    {
+                        color: $color-white;
+                        background-color: $color-black;
+                    }
+                    @media (hover: hover){
+                        &:hover{
+                            color: $color-white;
+                            background-color: $color-black;
+                        }
+                    }
+                }
+            }
+        }
         &__title{
+            width: 100%;
             &__link{
                 display: block;
                 color: $color-black;
-                &:hover{
+                &:hover,
+                &:focus-visible
+                {
                     text-decoration: underline;
                 }
             }
         }
         &__text{
             padding: 10px 0 20px
+        }
+        .btn{
+            white-space: nowrap;
+            margin-top: auto;
         }
     }
 
@@ -136,7 +200,9 @@ img{
             -0.4em 0.4em 0 #f700ff;
     }
     
-    &:active{
+    &:active,
+    &:focus-within
+    {
         @include card-effect;
     }
     @media (hover: hover){
